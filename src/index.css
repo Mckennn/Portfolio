@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "PP Neue Montreal Book";
+  font-style: normal;
+  font-weight: normal;
+  src: local("PP Neue Montreal Book"),
+    url("./fonts/ppneuemontreal-book.woff") format("woff");
+}
+
+@font-face {
+  font-family: "PP Neue Montreal Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("PP Neue Montreal Italic"),
+    url("./fonts/ppneuemontreal-italic.woff") format("woff");
+}
+
+.italic-text {
+  font-family: "PP Neue Montreal Italic", sans-serif;
+}
+
 @layer base {
   body {
     @apply text-primary font-secondary bg-white relative;
@@ -13,10 +33,10 @@
   }
 
   .h1 {
-    @apply text-[54px] xl:text-[65px] xl:text-[80px] xxl:text-[108px] font-primary font-bold capitalize leading-[120%] tracking-[-0.05em] mb-2;
+    @apply text-[2.8125rem] xl:text-[4.0625rem] xxl:text-[6.75rem] font-primary font-bold capitalize leading-[100%] tracking-wide mb-2;
   }
   .h2 {
-    @apply text-[36px] xl:text-[25px] xl:text-[40px] xxl:text-[68px] font-primary font-bold capitalize leading-[120%] tracking-[-0.05em] mb-2;
+    @apply text-[2.25rem] xl:text-[1.5625rem] xxl:text-[4.25rem] font-primary font-bold capitalize leading-[120%] tracking-[-0.05em] mb-2;
   }
 
   .section {
@@ -48,6 +68,28 @@
     @apply text-primary;
   }
 
+  .btn2 {
+    @apply relative py-[18px] px-[50px] h-[66px] flex items-center justify-center text-center text-base uppercase font-secondary font-semibold bg-white text-black overflow-hidden transition-all duration-300 border border-black;
+  }
+  .btn2::before {
+    @apply content-[''] absolute inset-0 bg-black w-0 h-full transition-all duration-300;
+  }
+  .btn2:hover::before {
+    @apply w-full;
+  }
+  .btn2:hover {
+    @apply text-white;
+  }
+  .btn2:hover {
+    border-color: #ffffff;
+  }
+  .btn2 span {
+    @apply relative z-10;
+  }
+  .btn2:hover span {
+    @apply text-white;
+  }
+
   .link-underline {
     @apply relative tracking-[1px];
   }
@@ -73,7 +115,7 @@
   span#scrollDownArrow {
     position: absolute;
     /* bottom: 6%; */
-    top: 45%;
+    top: 46%;
     left: 50%;
     width: 30px;
     height: 50px;
@@ -82,7 +124,6 @@
     border-radius: 50px;
     box-sizing: border-box;
   }
-
   span#scrollDownArrow::before {
     position: absolute;
     top: 10px;
@@ -128,6 +169,63 @@
     }
     100% {
       opacity: 0;
+    }
+  }
+
+  /* Ajoutez ces styles à votre fichier CSS */
+  .responsive-img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 1280px) {
+    .responsive-img {
+      width: auto;
+      height: 851px; /* ou toute autre hauteur que vous souhaitez */
+    }
+  }
+
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .header-slide {
+    animation: slideDown 2s ease-out forwards;
+  }
+
+  .rotating-text {
+    animation: rotate 8s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loader {
+    border: 3px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 3px solid #3498db;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }

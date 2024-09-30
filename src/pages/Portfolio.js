@@ -1,360 +1,175 @@
-// import { motion } from "framer-motion";
-// import React, { useState } from "react";
-
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css";
-// import { Link } from "react-router-dom";
-// import { BsArrowUpRight, BsGithub } from "react-icons/bs";
-// import {
-//   Tooltip,
-//   TooltipContent,
-//   TooltipProvider,
-//   TooltipTrigger,
-// } from "@radix-ui/react-tooltip";
-// import Image1 from "../img/portfolio/arkam-img.png";
-// import Image2 from "../img/portfolio/flight.png";
-// import Image3 from "../img/portfolio/Vignette web I Hoobank.jpg";
-// import { transition1 } from "transitions";
-// import WorkSliderBtns from "components/WorkSliderBtns";
-
-// const projects = [
-//   {
-//     num: "01",
-//     category: "frontend",
-//     title: "project 1",
-//     description:
-//       "Arkam est une association musicale qui organise des évènements sur la métropole Lilloise.",
-//     stack: [
-//       { name: "Html 5" },
-//       { name: "Css 3" },
-//       { name: "Javascript" },
-//       { name: "React.JS" },
-//     ],
-//     image: Image1,
-//     live: "https://arkam-experience.fr/",
-//     github: "",
-//   },
-//   {
-//     num: "02",
-//     category: "frontend",
-//     title: "project 2",
-//     description:
-//       "Flight propose la partie vitrine d'un site de réservation de vol.",
-//     stack: [
-//       { name: "Html 5" },
-//       { name: "Css 3" },
-//       { name: "Javascript" },
-//       { name: "React.JS" },
-//     ],
-//     image: Image2,
-//     live: "https://flight-lucasjules.fr/",
-//     github: "",
-//   },
-//   {
-//     num: "03",
-//     category: "frontend",
-//     title: "project 3",
-//     description:
-//       "Voici la partie vitrine d'un site de banque nouvelle génération.",
-//     stack: [
-//       { name: "Html 5" },
-//       { name: "Css 3" },
-//       { name: "Javascript" },
-//       { name: "React.JS" },
-//       { name: "Tailwind" },
-//     ],
-//     image: Image3,
-//     live: "https://hoobank-lucasjules.fr/",
-//     github: "",
-//   },
-// ];
-
-// const Portfolio = () => {
-//   const [project, setProject] = useState(projects[0]);
-//   // bg-[#E8F1F6]
-//   const handleSlideChange = (swiper) => {
-//     const currentIndex = swiper.activeIndex;
-//     setProject(projects[currentIndex]);
-//   };
-//   return (
-//     <motion.section
-//       initial={{ opacity: 0, y: "100%" }}
-//       animate={{ opacity: 1, y: 0 }}
-//       exit={{ opacity: 0, y: "100%" }}
-//       transition={transition1}
-//       className="min-h-[80vh] flex flex-col justify-center pt-[100px] lg:pt-[140px] xl:px-0 items-center lg:items-start"
-//     >
-//       {/* <h1 className="container h1 w-full mx-auto xl:py-[50px]">Portfolio</h1> */}
-//       <div className="bg-[#E8F1F6] w-full">
-//         <div className="container mx-auto font-secondary xl:p-[50px]">
-//           <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-//             <div className="w-full xl:w-[50%] flex flex-col xl:justify-between order-2 xl:order-none">
-//               <div className="flex flex-col gap-[30px]">
-//                 <div className="h1 font-primary text-8xl leading-none font-extrabold text-outline">
-//                   {/* {project.num} */}<span className="text-[#339989]">My</span> Project :
-//                 </div>
-//                 <h2 className="text-[60px] font-bold leading-none font-primary text-primary group-hover:text-accent transition-all duration-500 capitalize">
-//                   {project.category}
-//                 </h2>
-//                 <p className="text-black/60">{project.description}</p>
-//                 <ul className="flex gap-4">
-//                   {project.stack.map((item, index) => {
-//                     return (
-//                       <li key={index} className="text-xl">
-//                         {item.name}
-//                         {index !== project.stack.length - 1 && ","}
-//                       </li>
-//                     );
-//                   })}
-//                 </ul>
-//                 <div className="border border-black/20"></div>
-//                 <div className="flex items-center gap-4 pb-[20px] pl-[10px] lg:">
-//                   <Link to={project.live} target="_blank">
-//                     <TooltipProvider delayDuration={100}>
-//                       <Tooltip>
-//                         <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-black/10 flex justify-center items-center hover:bg-black group transition duration-300">
-//                           <BsArrowUpRight className=" text-black text-3xl group-hover:text-white" />
-//                         </TooltipTrigger>
-//                         <TooltipContent className="">
-//                           <p className="bg-[#E8F1F6]">Live project</p>
-//                         </TooltipContent>
-//                       </Tooltip>
-//                     </TooltipProvider>
-//                   </Link>
-//                   <Link to={project.github} target="_blank">
-//                     <TooltipProvider delayDuration={100}>
-//                       <Tooltip>
-//                         <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-black/10 flex justify-center items-center hover:bg-black group transition duration-300">
-//                           <BsGithub className=" text-black text-3xl group-hover:text-white" />
-//                         </TooltipTrigger>
-//                         <TooltipContent className="">
-//                           <p className="bg-[#E8F1F6]">Github repository</p>
-//                         </TooltipContent>
-//                       </Tooltip>
-//                     </TooltipProvider>
-//                   </Link>
-//                 </div>
-//               </div>
-//             </div>
-//             <motion.div
-//               initial={{ opacity: 0, y: "-80%" }}
-//               animate={{ opacity: 1, y: 0 }}
-//               exit={{ opacity: 0, y: "-80%" }}
-//               transition={transition1}
-//               className="w-full xl:w-[50%]"
-//             >
-//               <Swiper
-//                 spaceBetween={30}
-//                 slidesPerView={1}
-//                 className="xl:h-[520px] mb-12 xl:mb-0"
-//                 onSlideChange={handleSlideChange}
-//               >
-//                 {projects.map((project, index) => {
-//                   return (
-//                     <SwiperSlide key={index} className="w-full">
-//                       <div className="h-[460px] relative group flex justify-center items-center bg-black">
-//                         <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-//                         <div className="relative w-full h-full overflow-hidden">
-//                           <img
-//                             src={project.image}
-//                             className="object-cover w-full h-full"
-//                             alt=""
-//                           />
-//                         </div>
-//                       </div>
-//                     </SwiperSlide>
-//                   );
-//                 })}
-//                 <WorkSliderBtns
-//                   containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-//                   btnStyles="bg-black/80 hover:bg-black text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all text-white"
-//                 />
-//               </Swiper>
-//             </motion.div>
-//           </div>
-//         </div>
-//       </div>
-//     </motion.section>
-//   );
-// };
-
-// export default Portfolio;
-
 import { motion } from "framer-motion";
-import React, { useState } from "react";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { Link } from "react-router-dom";
-import { BsArrowUpRight, BsGithub } from "react-icons/bs";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@radix-ui/react-tooltip";
+import BgImg from "../img/home/grille-b.jpg";
 import Image1 from "../img/portfolio/arkam-img.png";
 import Image2 from "../img/portfolio/flight.png";
-import Image3 from "../img/portfolio/Vignette web I Hoobank.jpg";
+import Image3 from "../img/portfolio/Insta-clone.png";
+// import Image4 from "../img/portfolio/Vignette web I Hoobank.jpg";
 import { transition1 } from "transitions";
-import WorkSliderBtns from "components/WorkSliderBtns";
+import { Link } from "react-router-dom";
+import AnimatedTitle from "components/AnimatedTitle";
 
 const projects = [
   {
-    num: "01",
-    category: "frontend",
-    title: "project 1",
+    id: 1,
+    title: "Arkam",
+    img: Image1,
     description:
       "Arkam est une association musicale qui organise des évènements sur la métropole Lilloise.",
-    stack: [
-      { name: "Html 5" },
-      { name: "Css 3" },
-      { name: "Javascript" },
-      { name: "React.JS" },
-    ],
-    image: Image1,
-    live: "https://arkam-experience.fr/",
-    github: "",
+    url: "https://arkam-experience.fr/",
   },
   {
-    num: "02",
-    category: "frontend",
-    title: "project 2",
+    id: 2,
+    title: "Flight",
+    img: Image2,
     description:
       "Flight propose la partie vitrine d'un site de réservation de vol.",
-    stack: [
-      { name: "Html 5" },
-      { name: "Css 3" },
-      { name: "Javascript" },
-      { name: "React.JS" },
-    ],
-    image: Image2,
-    live: "https://flight-lucasjules.fr/",
-    github: "",
+    url: "https://flight-lucasjules.fr/",
   },
   {
-    num: "03",
-    category: "frontend",
-    title: "project 3",
+    id: 3,
+    title: "Instagram Clone",
+    img: Image3,
     description:
-      "Voici la partie vitrine d'un site de banque nouvelle génération.",
-    stack: [
-      { name: "Html 5" },
-      { name: "Css 3" },
-      { name: "Javascript" },
-      { name: "React.JS" },
-      { name: "Tailwind" },
-    ],
-    image: Image3,
-    live: "https://hoobank-lucasjules.fr/",
-    github: "",
+      "Ceci un clone du reseau social Instagram, j'ai essayé d'être le plus fidèle possible à ce dernier.",
+    url: "https://instagram-clone-black-mu.vercel.app/",
   },
+  // {
+  //   id: 4,
+  //   title: "Hoobank",
+  //   img: Image4,
+  //   description:
+  //     "Voici la partie vitrine d'un site de banque nouvelle génération.",
+  // },
 ];
 
 const Portfolio = () => {
-  const [project, setProject] = useState(projects[0]);
-  // bg-[#E8F1F6]
-  const handleSlideChange = (swiper) => {
-    const currentIndex = swiper.activeIndex;
-    setProject(projects[currentIndex]);
-  };
   return (
     <motion.section
-      initial={{ opacity: 0, y: "100%" }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: "100%" }}
-      transition={transition1}
-      className="min-h-[80vh] flex flex-col justify-center pt-[100px] lg:pt-[140px]  items-center lg:items-start"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        backgroundImage: `url(${BgImg})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+      className="bg-[#e1e1e1] flex min-h-screen items-center justify-center pt-[100px] lg:pt-[140px]"
+      id="work"
     >
-      {/* <h1 className="container h1 w-full mx-auto xl:py-[50px]">Portfolio</h1> */}
-      <div className="w-full">
-        <div className="container mx-auto font-secondary bg-[#E8F1F6] xl:p-[50px] xl:shadow-lg">
-          <div className="flex flex-col ">
-            <div className="w-[full] flex flex-col order-2">
-              <div className="flex flex-col gap-[30px]">
-                <div className="h1 font-primary text-8xl leading-none font-extrabold text-outline">
-                  {/* {project.num} */}
-                  <span className="text-[#339989]">My</span> Project :
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row lg:gap-x-10">
+          <motion.div
+            initial={{ opacity: 0, y: "-200%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-200%" }}
+            transition={transition1}
+            className="flex-1 flex flex-col gap-y-6 lg:gap-y-12 mb-[24px] lg:mb-0"
+          >
+            <div className="pl-[10px] min-h-[300px] lg:h-[450px] flex flex-col justify-between">
+              {/* <h1 className="h1 leading-tight text-primary">
+                My Latest <br />
+                <span className="text-[#339989]">Work.</span>
+              </h1> */}
+
+              <div className="flex justify-center lg:block">
+                <AnimatedTitle
+                  title={["MY LATEST "]}
+                  className="lg:tracking-wide lg:text-left text-[2rem] lg:text-[3vw]"
+                />
+
+                <AnimatedTitle
+                  title={["WORK."]}
+                  className="lg:tracking-wide lg:text-left text-[2rem] lg:text-[3vw] text-[#FF8811]"
+                />
+              </div>
+
+              <p className="max-w-xs sm:max-w-max mb-8 ">
+                <span className="font-bold">
+                  Bienvenue dans mon univers créatif !
+                </span>
+                <br />
+                Chaque projet ici reflète ma passion pour le design et
+                l'innovation. Découvrez des interfaces intuitives, des designs
+                modernes, et des solutions créatives, conçus sur mesure pour
+                répondre aux besoins variés de mes clients. Explorez mon travail
+                et laissez-vous inspirer !
+              </p>
+
+              <Link
+                to={"https://github.com/Mckennn"}
+                target="_blank"
+                className="btn w-[180px] lg:w-[262px]"
+              >
+                <span>View all projects</span>
+              </Link>
+            </div>
+
+            <a href={projects[0].url} target="_blank">
+              <div
+                key={projects[0].id}
+                className="group relative overflow-hidden border-2 border-black/20 rounded-xl"
+              >
+                <div className="group-hover:bg-[black]/70 w-full h-full absolute z-40 transition-all duration-300"></div>
+
+                <img
+                  src={projects[0].img}
+                  alt={projects[0].title}
+                  className="w-full h-[300px] sm:h-[350px] lg:h-[450px] object-cover group-hover:scale-125 transition-all duration-500"
+                />
+
+                <div className="absolute -bottom-full left-8 sm:left-12 group-hover:bottom-20 sm:group-hover:bottom-24 transition-all duration-500 z-50 text-white">
+                  <span className="text-gradient">
+                    {projects[0].description}
+                  </span>
                 </div>
-                <h2 className="text-[60px] font-bold leading-none font-primary text-primary group-hover:text-accent transition-all duration-500 capitalize">
-                  {project.category}
-                </h2>
-                <p className="text-black/60">{project.description}</p>
-                <ul className="flex gap-4">
-                  {project.stack.map((item, index) => {
-                    return (
-                      <li key={index} className="text-xl">
-                        {item.name}
-                        {index !== project.stack.length - 1 && ","}
-                      </li>
-                    );
-                  })}
-                </ul>
-                <div className="border border-black/20"></div>
-                <div className="flex items-center gap-4 pb-[20px] pl-[10px] lg:">
-                  <Link to={project.live} target="_blank">
-                    <TooltipProvider delayDuration={100}>
-                      <Tooltip>
-                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-black/10 flex justify-center items-center hover:bg-black group transition duration-300">
-                          <BsArrowUpRight className=" text-black text-3xl group-hover:text-white" />
-                        </TooltipTrigger>
-                        <TooltipContent className="">
-                          <p className="bg-[#E8F1F6]">Live project</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </Link>
-                  <Link to={project.github} target="_blank">
-                    <TooltipProvider delayDuration={100}>
-                      <Tooltip>
-                        <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-black/10 flex justify-center items-center hover:bg-black group transition duration-300">
-                          <BsGithub className=" text-black text-3xl group-hover:text-white" />
-                        </TooltipTrigger>
-                        <TooltipContent className="">
-                          <p className="bg-[#E8F1F6]">Github repository</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </Link>
+
+                <div className="absolute -bottom-full left-8 sm:left-12 group-hover:bottom-12 sm:group-hover:bottom-14 transition-all duration-700 z-50 text-white">
+                  <span className="text-2xl sm:text-3xl text-white">
+                    {projects[0].title}
+                  </span>
                 </div>
               </div>
-            </div>
-            <motion.div
-              initial={{ opacity: 0, y: "-80%" }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: "-80%" }}
-              transition={transition1}
-              className="w-full xl:pt-[75px]"
-            >
-              <Swiper
-                spaceBetween={30}
-                slidesPerView={1}
-                className="xl:h-[700px] mb-12 xl:mb-0"
-                onSlideChange={handleSlideChange}
-              >
-                {projects.map((project, index) => {
-                  return (
-                    <SwiperSlide key={index} className="w-full">
-                      <div className="h-[460px] relative group flex justify-center items-center bg-black xl:min-h-[650px] xl:shadow-lg">
-                        <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
-                        <div className="relative w-full h-full overflow-hidden">
-                          <img
-                            src={project.image}
-                            className="object-cover w-full h-full"
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                  );
-                })}
-                <WorkSliderBtns
-                  containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                  btnStyles="bg-black/80 hover:bg-black text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all text-white"
-                />
-              </Swiper>
-            </motion.div>
-          </div>
+            </a>
+          </motion.div>
+
+          {/* Deuxième colonne - Les trois autres projets */}
+
+          <motion.div
+            initial={{ opacity: 0, y: "100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "100%" }}
+            transition={transition1}
+            className="flex-1 flex flex-col gap-y-6 mb-[24px] lg:mb-0 lg:gap-y-10"
+          >
+            {projects.slice(1).map((project) => (
+              <a href={project.url} target="_blank">
+                <div
+                  key={project.id}
+                  className="group relative overflow-hidden border-2 border-black/20 rounded-xl"
+                >
+                  <div className="group-hover:bg-black/70 w-full h-full absolute z-40 transition-all duration-300"></div>
+
+                  <img
+                    src={project.img}
+                    alt={project.title}
+                    className="w-full h-[300px] sm:h-[350px] lg:h-[450px] object-cover group-hover:scale-125 transition-all duration-500"
+                  />
+
+                  <div className="absolute -bottom-full left-8 sm:left-12 group-hover:bottom-20 sm:group-hover:bottom-24 transition-all duration-500 z-50 text-white">
+                    <span className="text-gradient">{project.description}</span>
+                  </div>
+
+                  <div className="absolute -bottom-full left-8 sm:left-12 group-hover:bottom-12 sm:group-hover:bottom-14 transition-all duration-700 z-50 text-white">
+                    <span className="text-2xl sm:text-3xl text-white">
+                      {project.title}
+                    </span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </motion.div>
         </div>
       </div>
     </motion.section>
